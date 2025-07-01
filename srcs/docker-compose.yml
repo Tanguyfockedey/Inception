@@ -1,0 +1,9 @@
+services:
+  nginx:
+    build: requirements/nginx/.
+    container_name: nginx
+
+
+  # wordpress:
+  #   build: requirements/wordpress/.
+  #   container_name: wordpress
