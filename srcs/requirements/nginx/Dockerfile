@@ -3,7 +3,6 @@ FROM alpine:3.21
 # Install dependencies
 RUN apk update
 RUN apk upgrade
-RUN apk add vim
 RUN apk add nginx
 RUN apk add openssl
 
@@ -15,8 +14,6 @@ RUN openssl req -x509 -nodes \
 	-subj "/C=BE/ST=./L=./O=42/OU=19/CN=."
 
 # Nginx configuration
-RUN mkdir -p /var/run/nginx
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-RUN chmod -R 755 /var/www
-#RUN chown -R www-data:www-data /var/www
-#CMD [ "nginx", "-g", "daemon off;" ]
+COPY tools/index.html /var/www/html/index.html
+CMD [ "nginx", "-g", "daemon off;" ]
