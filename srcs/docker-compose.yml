@@ -1,9 +1,28 @@
 services:
   nginx:
-    build: requirements/nginx/.
     container_name: nginx
+    build: requirements/nginx/.
+    ports: 
+      - 80:80
+      - 443:443
+    depends_on: 
+      - wordpress
+    volumes: 
+      - ./WordPress:/var/www/html
+    restart: always
 
+  wordpress:
+    container_name: wordpress
+    build: requirements/wordpress/.
+    ports: 
+      - 8080:80
+    volumes: 
+      - ./WordPress:/var/www/html
+    restart: always
 
-  # wordpress:
-  #   build: requirements/wordpress/.
-  #   container_name: wordpress
+  mariadb:
+    container_name: mariadb
+    build: requirements/mariadb/.
+    volumes:
+      - ./DB:/var/lib/mysql
+    restart: always

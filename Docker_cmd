@@ -1,3 +1,5 @@
 docker build -t nginx .
 docker run -it nginx
-docker system prune -a --volumes	
+docker system prune -a --volumes
+
+docker compose

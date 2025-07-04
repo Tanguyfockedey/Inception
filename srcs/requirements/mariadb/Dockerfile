@@ -11,4 +11,4 @@ RUN mkdir -p /var/lib/mysql
 COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 COPY conf/mariadb-init.sh /docker-entrypoint-initdb.d/mariadb-init.sh
 RUN chmod +x /docker-entrypoint-initdb.d/mariadb-init.sh
-RUN /docker-entrypoint-initdb.d/mariadb-init.sh
+#RUN /docker-entrypoint-initdb.d/mariadb-init.sh
