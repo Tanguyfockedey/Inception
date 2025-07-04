@@ -5,24 +5,48 @@ services:
     ports: 
       - 80:80
       - 443:443
-    depends_on: 
-      - wordpress
+    networks:
+      - docker_network
     volumes: 
-      - ./WordPress:/var/www/html
+      - WordPress:/var/www/html
     restart: always
 
   wordpress:
     container_name: wordpress
     build: requirements/wordpress/.
-    ports: 
-      - 8080:80
+    networks:
+      - docker_network
     volumes: 
-      - ./WordPress:/var/www/html
+      - WordPress:/var/www/html
     restart: always
 
   mariadb:
     container_name: mariadb
     build: requirements/mariadb/.
+    networks:
+      - docker_network
     volumes:
-      - ./DB:/var/lib/mysql
+      - DB:/var/lib/mysql
+#    secrets:
+#      - db_root_password
+#      - db_user_password
     restart: always
+
+
+#serects:
+#  db_root_password:
+#    file: ../secrets/db_root_password.txt
+#  db_user_password:
+#    file: ../secrets/db_password.txt
+#  credentials:
+#    file: ../secrets/credentials.txt
+
+networks:
+  docker_network:
+    driver: bridge
+
+volumes:
+  DB:
+   driver: local
+  WordPress:
+    driver: local
