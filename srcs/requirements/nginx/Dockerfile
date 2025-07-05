@@ -15,6 +15,7 @@ RUN openssl req -x509 -nodes \
 
 # Nginx configuration
 COPY conf/nginx.conf /etc/nginx/nginx.conf
+COPY conf/fastcgi-php.conf /etc/nginx/snippets/fastcgi-php.conf
 COPY tools/index.html /var/www/html/index.html
 #COPY tools/index.php /var/www/html/index.php
 CMD [ "nginx", "-g", "daemon off;" ]
