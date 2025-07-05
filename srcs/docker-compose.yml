@@ -6,11 +6,10 @@ services:
       - wordpress
     ports: 
       - 443:443
-      - 8080:8080
     networks:
       - docker_network
-    volumes: 
-      - WordPress:/var/www/html
+    # volumes: 
+    #   - ./WordPress:/var/www/html
     restart: always
 
   wordpress:
@@ -20,8 +19,8 @@ services:
       - mariadb
     networks:
       - docker_network
-    volumes: 
-      - WordPress:/var/www/html
+    # volumes: 
+    #   - WordPress:/var/www/html
     restart: always
 
   mariadb:
@@ -51,6 +50,6 @@ networks:
 
 volumes:
   DB:
-   driver: local
+    driver: local
   WordPress:
     driver: local
