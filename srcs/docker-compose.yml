@@ -1,0 +1,50 @@
+services:
+  nginx:
+    container_name: nginx
+    build: requirements/nginx/.
+    depends_on:
+      - wordpress
+    ports: 
+      - 443:443
+    networks:
+      - docker_network
+    volumes: 
+      - /home/tafocked/data/WordPress:/var/www/html
+    restart: always
+
+  wordpress:
+    container_name: wordpress
+    build: requirements/wordpress/.
+    depends_on:
+      - mariadb
+    networks:
+      - docker_network
+    volumes: 
+      - /home/${USERNAME}/data/WordPress:/var/www/html
+    restart: always
+
+  mariadb:
+    container_name: mariadb
+    build: requirements/mariadb/.
+    networks:
+      - docker_network
+    volumes:
+      - /home/${USERNAME}/data/DB:/var/lib/mysql
+    environment:
+      - DB=${DB}
+      - DB_USER=${DB_USER}
+    secrets:
+     - db_root_password
+     - db_password
+    restart: always
+
+secrets:
+ db_root_password:
+   file: ../secrets/db_root_password.txt
+ db_password:
+   file: ../secrets/db_password.txt
+ credentials:
+   file: ../secrets/credentials.txt
+
+networks:
+  docker_network:

@@ -1,0 +1,9 @@
+docker build -t nginx .
+docker run -it nginx
+docker system prune -a --volumes
+
+docker compose
+
+sudo chmod 777 DB WordPress
+docker ps
+docker exec -it nginx /bin/sh
