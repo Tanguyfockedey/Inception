@@ -1,10 +1,14 @@
 #!/bin/sh
 set -e
 
-mkdir /var/www
-mkdir /var/www/html
+mkdir -p /var/www/html
 cd /var/www/html
-curl -O https://fr.wordpress.org/wordpress-6.0-fr_FR.tar.gz
-tar -xzf wordpress-6.0-fr_FR.tar.gz
-rm wordpress-6.0-fr_FR.tar.gz
-chmod 777 -R wordpress
+curl -LO https://wordpress.org/latest.zip
+unzip -n latest.zip
+rm -f latest.zip
+
+# Fix permissions for the worpress directory
+#chown -R www-data:www-data /var/www/html
+chmod -R 777 /var/www/html
+
+exec "$@"

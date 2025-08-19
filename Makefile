@@ -27,5 +27,6 @@ logs:
 clean:
 	@echo "Cleaning up the project..."
 	@docker system prune -a --volumes -f
+	@rm -rf ../data
 	
 .PHONY: all up down logs clean

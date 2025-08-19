@@ -1,10 +1,9 @@
 FROM alpine:3.21
 
 # Install dependencies
-RUN apk update
-RUN apk upgrade
-#RUN apk add vim
-RUN apk add mariadb mariadb-client
+RUN apk add --no-cache \
+	mariadb=11.4.5-r0 \
+	mariadb-client=11.4.5-r0
 
 # MariaDB configuration
 COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf

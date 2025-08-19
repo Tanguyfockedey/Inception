@@ -34,17 +34,17 @@ services:
       - DB=${DB}
       - DB_USER=${DB_USER}
     secrets:
-     - db_root_password
-     - db_password
+      - db_root_password
+      - db_password
     restart: always
 
 secrets:
- db_root_password:
-   file: ../secrets/db_root_password.txt
- db_password:
-   file: ../secrets/db_password.txt
- credentials:
-   file: ../secrets/credentials.txt
+  db_root_password:
+    file: ../secrets/db_root_password.txt
+  db_password:
+    file: ../secrets/db_password.txt
+  credentials:
+    file: ../secrets/credentials.txt
 
 networks:
   docker_network:

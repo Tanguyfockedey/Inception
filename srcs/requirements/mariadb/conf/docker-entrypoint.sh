@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
+# Load environment variables from secrets
 DB_ROOT_PASSWORD=$(cat /run/secrets/db_root_password)
 DB_PASSWORD=$(cat /run/secrets/db_password)
 
