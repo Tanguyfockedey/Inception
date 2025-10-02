@@ -2,8 +2,8 @@ FROM alpine:3.21
 
 # Install dependencies
 RUN apk add --no-cache \
-	nginx=1.26.3-r0 \
-	openssl=3.3.4-r0
+	nginx \
+	openssl
 # RUN apk add curl
 
 # SSL certificates

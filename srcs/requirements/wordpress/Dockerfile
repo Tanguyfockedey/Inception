@@ -5,10 +5,10 @@ FROM alpine:3.21
 # RUN apk upgrade
 # RUN apk add vim
 RUN apk add --no-cache \
-	php83=8.3.19-r0 \
-	php83-fpm=8.3.19-r0 \
-	php83-mysqli=8.3.19-r0 \
-	curl=8.12.1-r1
+	php83 \
+	php83-fpm \
+	php83-mysqli \
+	curl
 
 # PHP configuration
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf

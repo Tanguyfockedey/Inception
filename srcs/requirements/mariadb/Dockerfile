@@ -2,8 +2,8 @@ FROM alpine:3.21
 
 # Install dependencies
 RUN apk add --no-cache \
-	mariadb=11.4.5-r0 \
-	mariadb-client=11.4.5-r0
+	mariadb \
+	mariadb-client
 
 # MariaDB configuration
 COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
