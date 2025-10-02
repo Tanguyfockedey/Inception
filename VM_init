@@ -2,5 +2,6 @@ Install ubuntu with open-ssh and docker pre-installed.
 Port forward 4242 to 22 then connect through SSH.
 Link VM to github and intra42.
 
-
+sudo apt install zsh -y
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo apt install make
