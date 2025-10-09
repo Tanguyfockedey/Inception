@@ -8,10 +8,16 @@ RUN apk add --no-cache \
 	php83 \
 	php83-fpm \
 	php83-mysqli \
+	php83-phar \
+	php83-mbstring \
+	php83-iconv \
 	curl
+
+
 
 # PHP configuration
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
+# COPY ./conf/wp-config.php /tmp/wp-config.php
 
 # WordPress installation
 COPY ./conf/docker-entrypoint.sh /usr/local/bin/

@@ -27,6 +27,7 @@ logs:
 clean:
 	@echo "Cleaning up the project..."
 	@docker system prune -a --volumes -f
-	@rm -rf ../data
+	@rm -rf ../data/DB
+	@rm -rf ../data/wordpress
 	
 .PHONY: all up down logs clean
