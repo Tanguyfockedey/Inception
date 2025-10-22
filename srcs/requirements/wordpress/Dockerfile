@@ -1,10 +1,8 @@
 FROM alpine:3.21
 
 # Install dependencies
-# RUN apk update
-# RUN apk upgrade
-# RUN apk add vim
 RUN apk add --no-cache \
+	mariadb-client \
 	php83 \
 	php83-fpm \
 	php83-mysqli \
@@ -13,11 +11,8 @@ RUN apk add --no-cache \
 	php83-iconv \
 	curl
 
-
-
 # PHP configuration
 COPY ./conf/www.conf /etc/php83/php-fpm.d/www.conf
-# COPY ./conf/wp-config.php /tmp/wp-config.php
 
 # WordPress installation
 COPY ./conf/docker-entrypoint.sh /usr/local/bin/

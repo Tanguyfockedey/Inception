@@ -9,7 +9,7 @@ RUN apk add --no-cache \
 COPY conf/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
-RUN mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql
+RUN mkdir -p /var/lib/mysql && chown -R mysql:mysql /var/lib/mysql && chmod 777 /var/lib/mysql
 
 COPY conf/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh

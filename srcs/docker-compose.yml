@@ -9,7 +9,8 @@ services:
     networks:
       - docker_network
     volumes: 
-      - /home/tafocked/data/WordPress:/var/www/html
+      - /home/${USERNAME}/data/WordPress:/var/www/html
+      # - wordpress:/var/www/html
     restart: always
 
   wordpress:
@@ -21,6 +22,7 @@ services:
       - docker_network
     volumes: 
       - /home/${USERNAME}/data/WordPress:/var/www/html
+      # - wordpress:/var/www/html
     environment:
       - DB=${DB}
       - DB_USER=${DB_USER}
@@ -40,6 +42,7 @@ services:
       - docker_network
     volumes:
       - /home/${USERNAME}/data/DB:/var/lib/mysql
+      # - mariadb:/var/lib/mysql
     environment:
       - DB=${DB}
       - DB_USER=${DB_USER}
@@ -62,3 +65,7 @@ secrets:
 
 networks:
   docker_network:
+
+# volumes:
+#   mariadb:
+#   wordpress:
