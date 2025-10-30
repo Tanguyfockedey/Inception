@@ -11,7 +11,7 @@ export DB_PASSWORD=$(cat /run/secrets/db_password)
 
 # Initialize DB if empty
 log "Checking if database is initialized..."
-if [ ! -d /var/lib/mysql/mysql ]; then
+if [ ! -d /var/lib/mysql/${DB} ]; then
     mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
 # Start MariaDB in background
