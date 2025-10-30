@@ -6,13 +6,17 @@
 #    By: tafocked <tafocked@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/21 23:24:51 by tafocked          #+#    #+#              #
-#    Updated: 2025/07/04 16:51:15 by tafocked         ###   ########.fr        #
+#    Updated: 2025/10/30 18:02:27 by tafocked         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all: up
 
+restart: down clean up
+
 up:
+	mkdir -p /home/${USER}/data/DB
+	mkdir -p /home/${USER}/data/WordPress
 	@echo "Starting up the project..."
 	@docker compose -f srcs/docker-compose.yml up --build -d
 
@@ -27,7 +31,7 @@ logs:
 clean:
 	@echo "Cleaning up the project..."
 	@docker system prune -a --volumes -f
-	@rm -rf ../data/DB
-	@rm -rf ../data/wordpress
-	
+	@docker compose -f srcs/docker-compose.yml down --volumes --rmi all
+	@sudo rm -rf /home/${USER}/data
+
 .PHONY: all up down logs clean

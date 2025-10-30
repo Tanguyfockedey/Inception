@@ -1,6 +1,6 @@
 [mysqld]
 user = mysql
 port = 3306
-bind_address = *
+bind_address = 0.0.0.0
 datadir = /var/lib/mysql
 log_error = /var/lib/mysql/mysqld.log

@@ -9,6 +9,14 @@ RUN apk add --no-cache \
 	php83-phar \
 	php83-mbstring \
 	php83-iconv \
+	php83-gd \
+	php83-curl \
+	php83-dom \
+	php83-exif \
+	php83-fileinfo \
+	php83-zip \
+	php83-intl \
+	php83-pecl-imagick \
 	curl
 
 # PHP configuration

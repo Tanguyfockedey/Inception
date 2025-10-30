@@ -30,16 +30,6 @@ if [ ! -f wp-config.php ]; then
 	echo "Creating custom wp-config.php..."
 	wp config create --allow-root --dbname=$DB --dbuser=$DB_USER --dbpass=$DB_PASSWORD --dbhost=mariadb
 
-	# # Enable WP debug logging
-	# wp config set WP_DEBUG true --raw --allow-root
-	# wp config set WP_DEBUG_LOG true --raw --allow-root
-	# wp config set WP_DEBUG_DISPLAY false --raw --allow-root
-
-	# wp option update siteurl "https://localhost:4343" --allow-root --path=/var/www/html
-	# wp option update home "https://localhost:4343" --allow-root --path=/var/www/html
-
-	# echo "if (isset(\$_SERVER['HTTP_X_FORWARDED_PROTO']) && \$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {\$_SERVER['HTTPS'] = 'on';}" >> /var/www/html/wp-config.php
-
 	echo "Installing WordPress..."
 	wp core install --allow-root --url=$DOMAIN --title="Inception" --admin_user=$WP_ADMIN --admin_password=$WP_ADMIN_PASSWORD --admin_email="admin@admin.com"
 
@@ -49,6 +39,6 @@ if [ ! -f wp-config.php ]; then
 fi
 # Fix permissions for the worpress directory
 chown -R www-data:www-data /var/www/html
-chmod -R 777 /var/www/html
+chmod -R 755 /var/www/html
 
 exec "$@"

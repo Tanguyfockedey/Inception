@@ -9,8 +9,8 @@ services:
     networks:
       - docker_network
     volumes: 
-      - /home/${USERNAME}/data/WordPress:/var/www/html
-      # - wordpress:/var/www/html
+      # - /home/${USERNAME}/data/WordPress:/var/www/html
+      - wordpress_data:/var/www/html
     restart: always
 
   wordpress:
@@ -21,8 +21,8 @@ services:
     networks:
       - docker_network
     volumes: 
-      - /home/${USERNAME}/data/WordPress:/var/www/html
-      # - wordpress:/var/www/html
+      # - /home/${USERNAME}/data/WordPress:/var/www/html
+      - wordpress_data:/var/www/html
     environment:
       - DB=${DB}
       - DB_USER=${DB_USER}
@@ -41,8 +41,8 @@ services:
     networks:
       - docker_network
     volumes:
-      - /home/${USERNAME}/data/DB:/var/lib/mysql
-      # - mariadb:/var/lib/mysql
+      # - /home/${USERNAME}/data/DB:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql
     environment:
       - DB=${DB}
       - DB_USER=${DB_USER}
@@ -66,6 +66,16 @@ secrets:
 networks:
   docker_network:
 
-# volumes:
-#   mariadb:
-#   wordpress:
+volumes:
+  mariadb_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USERNAME}/data/DB
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USERNAME}/data/WordPress

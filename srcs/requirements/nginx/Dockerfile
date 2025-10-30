@@ -14,10 +14,6 @@ RUN openssl req -x509 -nodes \
 
 # Nginx configuration
 COPY conf/nginx.conf /etc/nginx/nginx.conf
-COPY conf/docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-ENTRYPOINT [ "docker-entrypoint.sh" ]
 
 # Run in docker compose
 CMD [ "nginx", "-g", "daemon off;" ]
