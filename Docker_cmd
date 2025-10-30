@@ -6,7 +6,4 @@ docker compose
 
 sudo chmod 777 DB WordPress
 docker ps
-docker exec -it nginx /bin/sh
-
-wp option update siteurl "https://localhost:4343" --allow-root --path=/var/www/html
-wp option update home "https://localhost:4343" --allow-root --path=/var/www/html
+docker exec -it nginx sh

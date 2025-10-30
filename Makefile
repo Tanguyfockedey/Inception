@@ -6,7 +6,7 @@
 #    By: tafocked <tafocked@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/21 23:24:51 by tafocked          #+#    #+#              #
-#    Updated: 2025/10/30 18:02:27 by tafocked         ###   ########.fr        #
+#    Updated: 2025/10/30 18:42:25 by tafocked         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,6 @@ clean:
 	@echo "Cleaning up the project..."
 	@docker system prune -a --volumes -f
 	@docker compose -f srcs/docker-compose.yml down --volumes --rmi all
-	@sudo rm -rf /home/${USER}/data
+	@rm -rf /home/${USER}/data
 
 .PHONY: all up down logs clean
