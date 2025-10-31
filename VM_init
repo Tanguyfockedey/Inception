@@ -7,3 +7,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 sudo groupadd docker
 sudo usermod -aG docker $USER
 sudo apt install make
+
+etc/hosts -> 127.0.0.1 ${USER}.42.fr
